@@ -1,0 +1,338 @@
+/* ---------------------------------- */
+/* 1. Global Reset & Variables */
+/* ---------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #00ffc3;
+    --secondary-color: #8c7cd3;
+    --background-color: #1a1a2e;
+    --text-color: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+p {
+    color: #cccccc;
+}
+
+/* ---------------------------------- */
+/* 2. Navbar & Custom Cursor */
+/* ---------------------------------- */
+.navbar {
+    background-color: rgba(105, 104, 212, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color) !important;
+    text-decoration: underline 2px solid var(--primary-color);
+    text-underline-offset: 4px;
+}
+
+.navbar-toggler i {
+    color: var(--primary-color);
+}
+
+.cursor {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.15s ease-out, opacity 0.3s ease;
+    mix-blend-mode: exclusion;
+    opacity: 0.8;
+}
+
+.cursor.goo-active {
+    filter: url(#goo);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* ---------------------------------- */
+/* 3. Full-Page Section Layout */
+/* ---------------------------------- */
+.full-page-section {
+    min-height: 100vh;
+    padding: 100px 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, var(--secondary-color) 0%, transparent 40%),
+        radial-gradient(circle at bottom right, var(--primary-color) 0%, transparent 40%),
+        var(--background-color);
+}
+
+/* ---------------------------------- */
+/* 4. Home Section */
+/* ---------------------------------- */
+#home img {
+    max-width: 350px;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 195, 0.5);
+    margin-bottom: 30px;
+    z-index: 2;
+}
+
+#home .text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 10px;
+}
+
+#home .text h4 {
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+/* ---------------------------------- */
+/* 5. About Me Section */
+/* ---------------------------------- */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-skills {
+    flex: 1;
+    min-width: 200px;
+    background-color: rgba(0, 255, 195, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* ---------------------------------- */
+/* 6. Project Section */
+/* ---------------------------------- */
+.project-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: #2b2b4d;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 195, 0.2);
+}
+
+.btn-project {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+
+/* ---------------------------------- */
+/* 7. Resume (Skills) Section */
+/* ---------------------------------- */
+.resume-container {
+    max-width: 900px;
+    width: 100%;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.skill-item {
+    background-color: #2b2b4d;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    border-left: 5px solid var(--secondary-color);
+}
+
+.skill-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.progress-bar-container {
+    background-color: #3e3e6f;
+    border-radius: 5px;
+    height: 25px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 1.5s ease;
+}
+
+.skill-item .fa-css3-alt {
+    color: red;
+}
+
+.skill-item .fa-html5 {
+    color: orange;
+}
+
+.skill-item .fa-js-square {
+    color: yellow;
+}
+
+.skill-item .fa-bootstrap {
+    color: blue;
+}
+
+/* ---------------------------------- */
+/* 8. Contact & Footer */
+/* ---------------------------------- */
+.contact-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.contact-form {
+    text-align: left;
+}
+
+.contact-form .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.contact-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: none;
+    color: var(--text-color);
+}
+
+.contact-button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 12px 30px;
+    border: none;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+/* ---------------------------------- */
+/* 9. Media Queries for Responsiveness */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+
+    .about-container {
+        flex-direction: column;
+    }
+}
